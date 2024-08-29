@@ -1,0 +1,98 @@
+/* AdminLogin.css */
+.Admin-wrapper {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5; /* Light gray background for the entire form */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height for vertical centering */
+}
+
+.Admin-wrapper .login-card {
+  width: 380px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  text-align: center; /* Center-align text inside the card */
+}
+
+.Admin-wrapper .login-card .userInput {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left; /* Align labels to the left */
+}
+
+.Admin-wrapper .login-card .userInput label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.Admin-wrapper .login-card .userInput input {
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  padding: 0 10px;
+  font-size: 14px;
+  color: #333;
+  background-color: transparent;
+}
+
+.Admin-wrapper .login-card .btn-login {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6c757d; /* Gray button */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Admin-wrapper .login-card .btn-login:after {
+  content: '→';
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.Admin-wrapper .login-card .signUp {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.Admin-wrapper .login-card .signUp .sLink {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.Admin-wrapper .login-card .signUp .sLink:hover {
+  text-decoration: underline;
+}
+
+.Admin-wrapper .message {
+  margin-top: 10px;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.Admin-wrapper .message.success {
+  color: #28a745;
+}
+
+.Admin-wrapper .message.error {
+  color: #dc3545;
+}
+

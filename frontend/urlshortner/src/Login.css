@@ -1,0 +1,98 @@
+.Login-wrapper {
+  margin: 0;
+  padding: 0;
+  background-color: black; /* Black background */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.Login-wrapper .topSide {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding-bottom: 100px;
+}
+
+.Login-wrapper .parent-login {
+  padding: 50px;
+}
+
+.Login-wrapper .login-card {
+  margin: 0 auto;
+  width: 320px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 30px 70px 43px 70px;
+}
+
+.Login-wrapper .login-card h1 {
+  color: black;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.Login-wrapper .userInput {
+  margin-bottom: 20px;
+}
+
+.Login-wrapper .userInput input {
+  width: 100%;
+  height: 45px;
+  background-color: transparent;
+  color: black;
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: transparent;
+  text-indent: 18px;
+}
+
+.Login-wrapper .userInput input::-webkit-input-placeholder {
+  font-size: 1rem;
+  color: #999;
+}
+
+.Login-wrapper .userInput input::-moz-placeholder {
+  font-size: 1rem;
+  color: #999;
+  text-indent: 40px;
+}
+
+.Login-wrapper .btn-login {
+  margin-top: 20px;
+  width: 100%;
+  padding: 13px;
+  border-radius: 5px;
+  background-color: blue;
+  color: white;
+  border: none;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.Login-wrapper .signUp {
+  margin-top: 20px;
+  padding-left: 45px;
+}
+
+.Login-wrapper .sLink {
+  color: blue;
+  text-decoration: none;
+}
+
+.Login-wrapper .sLink:hover {
+  text-decoration: underline;
+}
+
+.Login-wrapper .message {
+  margin-top: 10px;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.Login-wrapper .message.success {
+  color: #28a745;
+}
+
+.Login-wrapper .message.error {
+  color: #dc3545;
+}

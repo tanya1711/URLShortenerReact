@@ -1,0 +1,89 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%;
+}
+.HomePage-wrapper {
+  margin: 0;
+  padding: 0;
+  background: black;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  min-height:100vh;
+  width: 100%;
+}
+
+.HomePage-wrapper .header {
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid #ddd;
+}
+
+.HomePage-wrapper .nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.HomePage-wrapper .nav-links a {
+  text-decoration: none;
+  color: black; /* Text color set to black */
+  font-size: 16px;
+}
+
+.HomePage-wrapper .nav-links a:hover {
+  color: #000;
+}
+
+.HomePage-wrapper .login-card {
+  margin: 0 auto;
+  width: 500px;
+  background-color: white; /* Login box set to white */
+  border-radius: 5px;
+  padding: 50px 100px 70px 100px;
+  margin-top: 50px;
+}
+
+.HomePage-wrapper .login-card h1 {
+  color: black; /* Header text color set to black */
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.HomePage-wrapper .btn-login {
+  margin-top: 20px;
+  width: 100%;
+  padding: 13px;
+  border-radius: 5px;
+  background-color: blue; /* Button set to blue */
+  color: white; /* Button text color set to white */
+  border: none;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.HomePage-wrapper .message {
+  margin-top: 10px;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.HomePage-wrapper .message.success {
+  color: #28a745; /* Green color for success */
+}
+
+.HomePage-wrapper .message.error {
+  color: #dc3545; /* Red color for error */
+}
+
+@media screen and (max-width: 740px) {
+  .HomePage-wrapper .login-card {
+    padding: 0 10px;
+    width: 100%;
+  }
+}
