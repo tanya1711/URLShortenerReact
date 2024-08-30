@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Admin.css';
 
-const AdminLoginPage = () => {
+const Admin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
+  const [selectedCompany, setSelectedCompany] = useState(null);
   const navigate = useNavigate();
 
   const submitLoginForm = async (event) => {
@@ -47,7 +48,7 @@ const AdminLoginPage = () => {
 
       setTimeout(async () => {
         try {
-          const postLoginResponse = await fetch('http://localhost:8081/getPostLogin', {
+          const postLoginResponse = await fetch('http://localhost:8081/adminpostlogin', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -57,10 +58,9 @@ const AdminLoginPage = () => {
 
           if (!postLoginResponse.ok) {
             const error = await postLoginResponse.json().catch(() => ({}));
-            throw new Error(error.message || 'Error loading adminpostlogin page');
+            throw new Error(error.message || 'Error loading Admin Post Login page');
           }
-
-          navigate('/adminpostlogin');
+            navigate('/adminpostlogin');
         } catch (error) {
           setMessage(error.message);
           setMessageType('error');
@@ -111,4 +111,4 @@ const AdminLoginPage = () => {
   );
 };
 
-export default AdminLoginPage;
+export default Admin;

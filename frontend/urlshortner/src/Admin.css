@@ -59,7 +59,6 @@
 }
 
 .Admin-wrapper .login-card .btn-login:after {
-  content: '→';
   margin-left: 10px;
   font-weight: bold;
 }

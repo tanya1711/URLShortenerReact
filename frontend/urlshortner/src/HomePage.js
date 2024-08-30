@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './HomePage.css';
 
 const HomePage = () => {
@@ -23,7 +23,7 @@ const HomePage = () => {
           <a href="#">About BigShyft</a>
           <a href="#">Support</a>
           <a href="#">Pricing</a>
-          <a href="#">Admin</a>
+          <Link to="/admin">Admin</Link>
         </nav>
       </header>
 
