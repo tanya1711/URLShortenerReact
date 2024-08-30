@@ -12,13 +12,13 @@ public class User {
     private String email;
     private String password;
     private int count;
-    private boolean isPaid;
+    private int isPaid;
 
     // Constructors
     public User() {
     }
 
-    public User(String name, String email, String password, boolean isPaid) {
+    public User(String name, String email, String password, int isPaid) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -67,11 +67,11 @@ public class User {
         return count;
     }
 
-    public void setIsPaid(boolean isPaid) {
+    public void setIsPaid(int isPaid) {
         this.isPaid = isPaid;
     }
 
-    public boolean getIsPaid() {
+    public int getIsPaid() {
         return isPaid;
     }
 }
