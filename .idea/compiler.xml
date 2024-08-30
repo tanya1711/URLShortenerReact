@@ -8,7 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="URLShortner" />
         <module name="URLShortnerNew" />
+        <module name="demo (2)" />
         <module name="demo" />
+        <module name="demo (1)" />
         <module name="frontend" />
       </profile>
     </annotationProcessing>
@@ -22,6 +24,8 @@
       <module name="URLShortner" options="-parameters" />
       <module name="URLShortnerNew" options="-parameters" />
       <module name="demo" options="-parameters" />
+      <module name="demo (1)" options="-parameters" />
+      <module name="demo (2)" options="-parameters" />
     </option>
   </component>
 </project>
