@@ -3,7 +3,9 @@ package com.example.demo.entityclass;
 
 import jakarta.annotation.Generated;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "plan")
 public class Plan {
 
     @Id
