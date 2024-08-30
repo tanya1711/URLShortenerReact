@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -43,6 +44,7 @@ public class UserService {
             System.out.println("User not found with email: " + email);
         }
     }
+
     public int getCountByUsername(String email) {
         Optional<User> optionalUser = userRepository.findByEmail(email);
         if (optionalUser.isPresent()) {
@@ -52,5 +54,9 @@ public class UserService {
             System.out.println("User not found with email: " + email);
             return -1; // or throw an exception if you prefer
         }
+    }
+
+    public List<User> getUserList() {
+        return userRepository.findAll();
     }
 }

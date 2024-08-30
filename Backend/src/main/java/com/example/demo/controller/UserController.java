@@ -5,6 +5,7 @@ import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,5 +28,10 @@ public class UserController {
         } else {
             throw new RuntimeException("Invalid email or password");
         }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/users")
+    public List<User> getUsers(){
+        return userService.getUserList();
     }
 }
