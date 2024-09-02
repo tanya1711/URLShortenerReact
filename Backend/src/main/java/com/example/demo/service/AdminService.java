@@ -18,9 +18,9 @@ public class AdminService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public Optional<Admin> adminLogin(String username, String password) {
-        System.out.println(adminRepository.findAll().get(0).getUsername());
-        Optional<Admin> admin = adminRepository.findByUsername(username);
+    public Optional<Admin> adminLogin(String email, String password) {
+        System.out.println(adminRepository.findAll().get(0).getEmail());
+        Optional<Admin> admin = adminRepository.findByEmail(email);
         if (admin.isPresent()) {
             return admin;
         }

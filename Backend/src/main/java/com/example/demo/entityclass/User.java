@@ -11,14 +11,14 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private int count;
-    private int isPaid;
+    private Integer count;
+    private Object isPaid; // Changed from int to boolean
 
     // Constructors
     public User() {
     }
 
-    public User(String name, String email, String password, int isPaid) {
+    public User(String name, String email, String password, Boolean isPaid) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -59,19 +59,19 @@ public class User {
         this.password = password;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public int getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public void setIsPaid(int isPaid) {
-        this.isPaid = isPaid;
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
-    public int getIsPaid() {
+    public Object isPaid() { // Updated to boolean getter
         return isPaid;
+    }
+
+    public void setPaid(Object isPaid) { // Updated to boolean setter
+        this.isPaid = isPaid;
     }
 }
