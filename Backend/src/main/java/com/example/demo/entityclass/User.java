@@ -12,10 +12,10 @@ public class User {
     private String email;
     private String password;
     private int count;
-    private int isPaid;
-
+    private int isPaid = 0;
     // Constructors
     public User() {
+
     }
 
     public User(String name, String email, String password, int isPaid) {
