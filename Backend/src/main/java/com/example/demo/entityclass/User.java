@@ -6,19 +6,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "users")
 public class User {
 
-    private int id;
+    private int userId;
     private String name;
     private String email;
     private String password;
     private int count;
     private int plan = 0;
+
     // Constructors
     public User() {
 
     }
 
-    public User(String name, String email, String password, int plan, int id) {
-        this.id = id;
+    public User(String name, String email, String password, int plan, int userId) {
+        this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -27,12 +28,13 @@ public class User {
     }
 
     // Getters and Setters
-    public int getId() {
-        return id;
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getUserId() {
+        return userId;
     }
 
     public String getName() {
@@ -60,7 +62,6 @@ public class User {
     }
 
 
-
     public void setPlan(int plan) {
         this.plan = plan;
     }
@@ -69,11 +70,11 @@ public class User {
         return plan;
     }
 
-    public void setCount(int  count) {
+    public void setCount(int count) {
         this.count = count;
     }
 
-        public int getCount() {
-            return count;
-        }
+    public int getCount() {
+        return count;
+    }
 }

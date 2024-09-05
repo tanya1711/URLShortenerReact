@@ -44,9 +44,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
             List<String> permittedURIs = new ArrayList<>();
-            permittedURIs.addAll(Arrays.asList("/signup", "/error", "/login", "/home", "/login.html", "/signUp.html","/favicon.ico","/postlogin.html","/adminLogin"));
+            permittedURIs.addAll(Arrays.asList("/signup", "/error", "/login", "/home", "/login.html", "/signUp.html", "/favicon.ico", "/postlogin.html", "/adminLogin"));
 //            if(!permittedURIs.contains(request.getRequestURI()) && !request.getRequestURI().contains("hello") ) {
-                if(request.getRequestURI().contains("/shorten")) {
+            if (request.getRequestURI().contains("/shorten")) {
                 System.out.println("ENTERED FILTER!!!");
                 System.out.println(request.getRequestURI());
                 System.out.println(request.getMethod());
@@ -70,12 +70,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     int count = planService.getCountForPlan(planId);
                     if (userService.getCountByUsername(username) < count) {
                         userService.incrementCount(username);
-//                        response.setStatus(HttpServletResponse.SC_OK);
-//                        System.out.println(response.getStatus()+" set through filter" );
-
-//                        response.getWriter().write("Request successful.");
-//                        return;
-
                     } else {
                         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                         response.getWriter().write("OOPs, you reached your free trial limit!");
