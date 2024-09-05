@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "plan")
 public class Plan {
 
-    @Id
     private int planId;
     private String planName;
     private int allowedCounts;
