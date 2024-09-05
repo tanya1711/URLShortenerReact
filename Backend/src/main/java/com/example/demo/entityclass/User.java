@@ -19,6 +19,7 @@ public class User {
     }
 
     public User(String name, String email, String password, int plan) {
+
         this.name = name;
         this.email = email;
         this.password = password;
@@ -59,13 +60,7 @@ public class User {
         this.password = password;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
 
-    public int getCount() {
-        return count;
-    }
 
     public void setPlan(int plan) {
         this.plan = plan;
@@ -74,4 +69,12 @@ public class User {
     public int getPlan() {
         return plan;
     }
+
+    public void setCount(int  count) {
+        this.count = count;
+    }
+
+        public int getCount() {
+            return count;
+        }
 }

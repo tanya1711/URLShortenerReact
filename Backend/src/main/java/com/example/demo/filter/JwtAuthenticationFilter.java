@@ -44,7 +44,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
             List<String> permittedURIs = new ArrayList<>();
-            permittedURIs.addAll(Arrays.asList("/signup", "/error", "/login", "/home", "/login.html", "/signUp.html","/favicon.ico","/postlogin.html"));
+            permittedURIs.addAll(Arrays.asList("/signup", "/error", "/login", "/home", "/login.html", "/signUp.html","/favicon.ico","/postlogin.html","/adminLogin"));
 //            if(!permittedURIs.contains(request.getRequestURI()) && !request.getRequestURI().contains("hello") ) {
                 if(request.getRequestURI().contains("/shorten")) {
                 System.out.println("ENTERED FILTER!!!");

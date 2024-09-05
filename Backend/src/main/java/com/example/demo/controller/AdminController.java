@@ -18,7 +18,7 @@ public class AdminController {
 
     @PostMapping("/adminLogin")
     public Admin loginAdmin(@RequestBody Admin loginAdmin) {
-        Optional<Admin> user = adminService.adminLogin(loginAdmin.getUsername(), loginAdmin.getPassword());
+        Optional<Admin> user = adminService.adminLogin(loginAdmin.getEmail(), loginAdmin.getPassword());
         if (user.isPresent()) {
             return user.get();
         } else {
