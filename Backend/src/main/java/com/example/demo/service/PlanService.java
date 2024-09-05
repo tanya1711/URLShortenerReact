@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlanService {
@@ -35,11 +36,25 @@ public class PlanService {
         try {
             Query query = new Query(Criteria.where("id").is(_id));
             Update update = new Update();
-            update.set("isPaid", plan);
+            update.set("plan", plan);
             mongoOperations.updateFirst(query, update, User.class);
         }
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public int getCountForPlan(int _id){
+        try {
+            Optional<Plan> optionalPlan = planRepository.findById(_id);
+            if(optionalPlan.isPresent()){
+                Plan plan = optionalPlan.get();
+                return  plan.getAllowedCounts();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return -1;
     }
 }

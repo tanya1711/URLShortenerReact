@@ -1,6 +1,7 @@
 package com.example.demo.filter;
 
 
+import com.example.demo.service.PlanService;
 import com.example.demo.service.UserService;
 import io.micrometer.common.lang.NonNullApi;
 import jakarta.servlet.FilterChain;
@@ -32,8 +33,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private DaoAuthenticationProvider authenticationProvider;
 
     @Autowired
-
     private UserService userService;
+
+    @Autowired
+    private PlanService planService;
 //    @Autowired
 //    private JwtTokenService jwtTokenService;
 
@@ -63,8 +66,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 System.out.println(authentication);
                 if (request.getRequestURI().equals("/shorten")) {
-
-                    if (userService.getCountByUsername(username) < 1) {
+                    int planId = userService.getPlanCountByUsername(username);
+                    int count = planService.getCountForPlan(planId);
+                    if (userService.getCountByUsername(username) < count) {
                         userService.incrementCount(username);
 //                        response.setStatus(HttpServletResponse.SC_OK);
 //                        System.out.println(response.getStatus()+" set through filter" );

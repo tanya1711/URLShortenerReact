@@ -12,18 +12,18 @@ public class User {
     private String email;
     private String password;
     private int count;
-    private int isPaid = 0;
+    private int plan = 0;
     // Constructors
     public User() {
 
     }
 
-    public User(String name, String email, String password, int isPaid) {
+    public User(String name, String email, String password, int plan) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.count = 0;
-        this.isPaid = isPaid;
+        this.plan = plan;
     }
 
     // Getters and Setters
@@ -67,11 +67,11 @@ public class User {
         return count;
     }
 
-    public void setIsPaid(int isPaid) {
-        this.isPaid = isPaid;
+    public void setPlan(int plan) {
+        this.plan = plan;
     }
 
-    public int getIsPaid() {
-        return isPaid;
+    public int getPlan() {
+        return plan;
     }
 }

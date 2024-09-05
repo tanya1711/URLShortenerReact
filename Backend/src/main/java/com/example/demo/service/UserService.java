@@ -19,6 +19,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     public User saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
@@ -54,6 +55,16 @@ public class UserService {
             System.out.println("User not found with email: " + email);
             return -1; // or throw an exception if you prefer
         }
+    }
+
+    public int getPlanCountByUsername(String email){
+        int planId = 0;
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        if(optionalUser.isPresent()){
+            User user = optionalUser.get();
+            planId = user.getPlan();
+        }
+        return planId;
     }
 
     public List<User> getUserList() {
