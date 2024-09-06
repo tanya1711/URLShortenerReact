@@ -68,7 +68,8 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findByEmail(email);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
-            planId = user.getPlan();
+            planId = user.getPlanId();
+
         }
         return planId;
     }

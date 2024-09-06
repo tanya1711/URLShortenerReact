@@ -7,6 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;
 
 public interface PlanRepository extends MongoRepository<Plan, Integer> {
-    Optional<Plan> findByPlanId(int planId);
-
+    public Optional<Plan> findByPlanId(int planId);
 }

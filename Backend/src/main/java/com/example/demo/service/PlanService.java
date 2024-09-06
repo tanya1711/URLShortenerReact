@@ -47,7 +47,6 @@ public class PlanService {
     public int getCountForPlan(int _id){
         try {
             Optional<Plan> optionalPlan = planRepository.findByPlanId(_id);
-
             if(optionalPlan.isPresent()){
                 Plan plan = optionalPlan.get();
                 return  plan.getAllowedCounts();

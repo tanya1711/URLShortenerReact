@@ -10,7 +10,7 @@ public class Url {
     private String id;
     private String originalUrl;
     private String shortUrl;
-
+    private int userId;
     // Getters and Setters
 
     public String getId() {
@@ -35,5 +35,13 @@ public class Url {
 
     public void setShortUrl(String shortUrl) {
         this.shortUrl = shortUrl;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 }

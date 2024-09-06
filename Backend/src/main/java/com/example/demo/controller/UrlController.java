@@ -23,6 +23,7 @@ public class UrlController {
     @PostMapping("/shorten")
     public ResponseEntity<Map<String, String>> shortenUrl(@RequestBody URLInputDTO urlDTO) {
         Url url;
+        int userId;
         Map<String, String> response = new HashMap<>();
         if (urlDTO.customUrl == null) {
             url = urlService.shortenUrl(urlDTO.getLongUrl());
@@ -33,7 +34,10 @@ public class UrlController {
             response.put("error", "Failed to shorten URL. Please try again with a different custom URL or long URL.");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
+        userId = url.getUserId();
         response.put("shortenedUrl", url.getShortUrl());
+        response.put("userId", String.valueOf(userId));
+        response.put("longUrl", urlDTO.longUrl);
         return ResponseEntity.ok(response);
     }
 
