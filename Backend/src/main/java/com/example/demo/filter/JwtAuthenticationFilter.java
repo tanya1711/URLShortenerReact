@@ -65,22 +65,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 Authentication authentication = authenticationProvider.authenticate(new UsernamePasswordAuthenticationToken(username, password));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 System.out.println(authentication);
-                if (request.getRequestURI().equals("/shorten")) {
-                    int planId = userService.getPlanCountByUsername(username);
-                    int count = planService.getCountForPlan(planId);
-                    if (userService.getCountByUsername(username) < count) {
-                        userService.incrementCount(username);
-                    } else {
-                        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                        response.getWriter().write("OOPs, you reached your free trial limit!");
-                        response.getWriter().flush();
-                        response.getWriter().close();
-                        return;
-                    }
+                int planId = userService.getPlanCountByUsername(username);
+                int count = planService.getCountForPlan(planId);
+                System.out.println(planId + " " + count);
+                if (userService.getCountByUsername(username) < count) {
+                    userService.incrementCount(username);
+                } else {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.getWriter().write("OOPs, you reached your free trial limit!");
+                    response.getWriter().flush();
+                    response.getWriter().close();
+                    return;
                 }
             }
 
         } catch (BadCredentialsException e) {
+            e.printStackTrace();
             System.out.println("Invalid/UserName password");
         }
 

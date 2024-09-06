@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="URLShortner" />
         <module name="URLShortnerNew" />
+        <module name="URLShortenerReact" />
         <module name="demo (2)" />
-        <module name="demo" />
         <module name="demo (1)" />
+        <module name="URLShortner" />
+        <module name="demo" />
         <module name="frontend" />
       </profile>
     </annotationProcessing>
@@ -21,6 +22,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Backend" options="-parameters" />
+      <module name="URLShortenerReact" options="-parameters" />
       <module name="URLShortner" options="-parameters" />
       <module name="URLShortnerNew" options="-parameters" />
       <module name="demo" options="-parameters" />
