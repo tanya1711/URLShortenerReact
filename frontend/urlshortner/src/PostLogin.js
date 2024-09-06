@@ -15,7 +15,9 @@ const App = () => {
      const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
      if (loggedInUser) {
        setEmail(loggedInUser.email);
-       setPassword(loggedInUser.password);
+       const storedPassword = localStorage.getItem('password');
+       setPassword(storedPassword);
+       console.log(storedPassword);
      }
 
      // Fetch planId from localStorage
