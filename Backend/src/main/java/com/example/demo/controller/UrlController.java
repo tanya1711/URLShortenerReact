@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.URLInputDTO;
 import com.example.demo.entityclass.Url;
+import com.example.demo.entityclass.User;
 import com.example.demo.service.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,9 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-@Controller
+@RestController
 public class UrlController {
 
     @Autowired
@@ -57,5 +59,10 @@ public class UrlController {
     public ResponseEntity getLogin() {
         System.out.println("entered post login container..........");
         return ResponseEntity.ok(null);
+    }
+
+    @GetMapping( "/geturl/{userId}")
+    public List<Url> getUserList(@PathVariable String userId){
+        return urlService.getURLList(Integer.parseInt(userId));
     }
 }

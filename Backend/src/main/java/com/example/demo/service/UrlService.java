@@ -5,6 +5,7 @@ import com.example.demo.mongorepository.UrlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -41,5 +42,9 @@ public class UrlService {
 
     public Optional<Url> getOriginalUrl(String shortUrl) {
         return urlRepository.findByShortUrl(shortUrl);
+    }
+
+    public List<Url> getURLList(int userId){
+        return  urlRepository.findByUserId(userId);
     }
 }
