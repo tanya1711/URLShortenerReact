@@ -68,6 +68,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 if (request.getRequestURI().equals("/shorten")) {
                     int planId = userService.getPlanCountByUsername(username);
                     int count = planService.getCountForPlan(planId);
+                    System.out.println(planId);
+                    System.out.println(count);
+                    System.out.println(userService.getCountByUsername(username));
                     if (userService.getCountByUsername(username) < count) {
                         userService.incrementCount(username);
                     } else {
