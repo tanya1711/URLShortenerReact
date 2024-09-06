@@ -7,6 +7,8 @@ const AdminPostLogin = () => {
   const [recruiterOptions, setRecruiterOptions] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [selectedRecruiter, setSelectedRecruiter] = useState(null);
+  const [message, setMessage] = useState('');
+
 
   // Fetch users (companies) from the API
   useEffect(() => {
@@ -79,6 +81,7 @@ const AdminPostLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage('');
 console.log('Selected Company:', selectedCompany); // Debug log
   console.log('Selected Recruiter:', selectedRecruiter); // Debug log
   localStorage.setItem('planId', selectedRecruiter.value);
@@ -95,18 +98,18 @@ console.log('Selected Company:', selectedCompany); // Debug log
           }),
         });
 
-        if (response.ok) {
-          console.log('Plan updated successfully');
-        } else {
-          console.error('Failed to update the plan:', response.status);
-        }
-      } catch (error) {
-        console.error('Error updating the plan:', error);
-      }
-    } else {
-      console.error('Please select both a user and a plan.');
-    }
-
+       if (response.ok) {
+               setMessage('Plan updated successfully!');  // Show success message
+               localStorage.setItem('planId', selectedRecruiter.value); // Save to localStorage after success
+             } else {
+               setMessage(`Failed to update the plan. Status code: ${response.status}`);
+             }
+           } catch (error) {
+             setMessage(`Error updating the plan: ${error.message}`);
+           }
+         } else {
+           setMessage('Please select both a user and a plan.');
+         }
   };
 
   return (
@@ -139,9 +142,16 @@ console.log('Selected Company:', selectedCompany); // Debug log
           </div>
           <input type="submit" className="adminpostlogin-select-btn" value="Update" />
         </form>
+
+        {message && (
+          <div className={`message ${message.includes('successfully') ? 'success' : 'error'}`}>
+            {message}
+          </div>
+        )}
       </div>
     </div>
   );
+
 };
 
 export default AdminPostLogin;
