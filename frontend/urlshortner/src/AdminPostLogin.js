@@ -18,7 +18,7 @@ const AdminPostLogin = () => {
           if (users.length > 0) {
             // Map user data to the format expected by react-select
             const userOptions = users.map(user => ({
-              value: user.id,
+              value: user.userId,
               label: user.name || 'Unknown', // Default to 'Unknown' if name is missing
             }));
 
@@ -47,7 +47,7 @@ const AdminPostLogin = () => {
           if (plans.length > 0) {
             // Map plan data to the format expected by react-select
             const planOptions = plans.map(plan => ({
-              value: plan.id,
+              value: plan.planId,
               label: plan.planName || 'No name available' // Default to 'No name available' if name is missing
             }));
 

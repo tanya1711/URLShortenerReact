@@ -13,20 +13,20 @@ public class User {
     private String email;
     private String password;
     private int count;
-    private int plan = 0;
+    private int planId = 0;
 
     // Constructors
     public User() {
 
     }
 
-    public User(String name, String email, String password, int plan, int userId) {
+    public User(String name, String email, String password, int planId, int userId) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
         this.count = 0;
-        this.plan = plan;
+        this.planId = planId;
     }
 
     // Getters and Setters
@@ -64,12 +64,12 @@ public class User {
     }
 
 
-    public void setPlan(int plan) {
-        this.plan = plan;
+    public void setPlanId(int planId) {
+        this.planId = planId;
     }
 
-    public int getPlan() {
-        return plan;
+    public int getPlanId() {
+        return planId;
     }
 
     public void setCount(int count) {

@@ -8,14 +8,19 @@ const App = () => {
   const [shortenedUrlMessage, setShortenedUrlMessage] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [planId, setPlanId] = useState(null);
 
-  useEffect(() => {
-    const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
-    if (loggedInUser) {
-      setEmail(loggedInUser.email);
-      setPassword(loggedInUser.password);
-    }
-  }, []);
+ useEffect(() => {
+     const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
+     if (loggedInUser) {
+       setEmail(loggedInUser.email);
+       setPassword(loggedInUser.password);
+     }
+
+     // Fetch planId from localStorage
+     const storedPlanId = localStorage.getItem('planId');
+     setPlanId(storedPlanId ? parseInt(storedPlanId) : 0); // Default to 0 if not found
+   }, []);
 
   const toggleUrlInput = () => {
     setIsCustomUrlEnabled(prevState => !prevState);
@@ -61,47 +66,49 @@ const App = () => {
     }
   };
 
-  return (
-  <div className="post-login-wrapper">
-    <div className="PostLogin">
-      <h1>BIGSHYFT</h1>
-      <h2>Shorten a long URL</h2>
-      <form id="shorten-url-form" onSubmit={submitShortenUrlForm}>
-        <label htmlFor="longUrl">Enter your URL:</label>
-        <input
-          type="text"
-          id="longUrl"
-          name="longUrl"
-          placeholder="https://example.com"
-          value={longUrl}
-          onChange={(e) => setLongUrl(e.target.value)}
-          required
-        />
-        <div className="checkbox-container">
-          <input
-            type="checkbox"
-            id="enableUrlInput"
-            checked={isCustomUrlEnabled}
-            onChange={toggleUrlInput}
-          />
-          <input
-            type="text"
-            id="customUrl"
-            name="customUrl"
-            placeholder="Enter your Custom URL"
-            value={customUrl}
-            onChange={(e) => setCustomUrl(e.target.value)}
-            disabled={!isCustomUrlEnabled}
-          />
+   return (
+      <div className="post-login-wrapper">
+        <div className="PostLogin">
+          <h1>BIGSHYFT</h1>
+          <h2>Shorten a long URL</h2>
+          <form id="shorten-url-form" onSubmit={submitShortenUrlForm}>
+            <label htmlFor="longUrl">Enter your URL:</label>
+            <input
+              type="text"
+              id="longUrl"
+              name="longUrl"
+              placeholder="https://example.com"
+              value={longUrl}
+              onChange={(e) => setLongUrl(e.target.value)}
+              required
+            />
+            {planId === 0 && (
+              <div className="checkbox-container">
+                <input
+                  type="checkbox"
+                  id="enableUrlInput"
+                  checked={isCustomUrlEnabled}
+                  onChange={toggleUrlInput}
+                />
+                <input
+                  type="text"
+                  id="customUrl"
+                  name="customUrl"
+                  placeholder="Enter your Custom URL"
+                  value={customUrl}
+                  onChange={(e) => setCustomUrl(e.target.value)}
+                  disabled={!isCustomUrlEnabled}
+                />
+              </div>
+            )}
+            <button type="submit">Shorten URL</button>
+          </form>
+          <div className={`success-message ${shortenedUrlMessage.includes('Error') ? 'error' : ''}`}>
+            {shortenedUrlMessage}
+          </div>
         </div>
-        <button type="submit">Shorten URL</button>
-      </form>
-      <div className={`success-message ${shortenedUrlMessage.includes('Error') ? 'error' : ''}`}>
-        {shortenedUrlMessage}
       </div>
-    </div>
-  </div>
-  );
+    );
 };
 
 export default App;
