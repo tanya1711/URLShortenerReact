@@ -81,6 +81,7 @@ const AdminPostLogin = () => {
     e.preventDefault();
 console.log('Selected Company:', selectedCompany); // Debug log
   console.log('Selected Recruiter:', selectedRecruiter); // Debug log
+  localStorage.setItem('planId', selectedRecruiter.value);
     if (selectedCompany && selectedRecruiter) {
       try {
         const response = await fetch(`http://localhost:8081/updatePlan`, {
@@ -105,6 +106,7 @@ console.log('Selected Company:', selectedCompany); // Debug log
     } else {
       console.error('Please select both a user and a plan.');
     }
+
   };
 
   return (

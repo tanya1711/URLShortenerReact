@@ -8,7 +8,7 @@ const App = () => {
   const [shortenedUrlMessage, setShortenedUrlMessage] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [planId, setPlanId] = useState(null);
+  const [planId, setPlanId] = useState('');
   const [userId, setUserId] = useState('');
 
  useEffect(() => {
