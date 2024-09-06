@@ -6,6 +6,8 @@ public class URLInputDTO {
 
     public String customUrl;
 
+    public  int userId;
+
     public void setLongUrl(String longUrl) {
         this.longUrl = longUrl;
     }
@@ -20,5 +22,13 @@ public class URLInputDTO {
 
     public String getCustomUrl() {
         return customUrl;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 }

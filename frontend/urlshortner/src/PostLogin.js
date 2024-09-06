@@ -86,7 +86,7 @@ const App = () => {
               onChange={(e) => setLongUrl(e.target.value)}
               required
             />
-            {planId === 0 && (
+            {planId === 1 && (
               <div className="checkbox-container">
                 <input
                   type="checkbox"

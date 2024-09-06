@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entityclass.Plan;
+import com.example.demo.entityclass.Url;
 import com.example.demo.entityclass.User;
 import com.example.demo.helper.MaxPlanIdResult;
 import com.example.demo.helper.MaxUserIdResult;
@@ -74,4 +75,5 @@ public class PlanService {
         MaxPlanIdResult maxPlanIdResult = result.getUniqueMappedResult();
         return (maxPlanIdResult != null) ? maxPlanIdResult.getMaxPlanId() : null;
     }
+
 }
