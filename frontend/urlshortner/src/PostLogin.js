@@ -8,14 +8,16 @@ const App = () => {
   const [shortenedUrlMessage, setShortenedUrlMessage] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [planId, setPlanId] = useState(null);
+  const [planId, setPlanId] = useState('');
   const [userId, setUserId] = useState('');
 
  useEffect(() => {
      const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
      if (loggedInUser) {
        setEmail(loggedInUser.email);
-       setPassword(loggedInUser.password);
+       const storedPassword = localStorage.getItem('password');
+       setPassword(storedPassword);
+       console.log(storedPassword);
      }
 
      // Fetch planId from localStorage
