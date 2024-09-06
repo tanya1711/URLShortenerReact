@@ -20,19 +20,20 @@ public class PlanController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/addPlan")
     public ResponseEntity<Plan> addPlan(@RequestBody Plan plan) {
+        int maxId = planService.getMaxPlanId();
+        plan.setPlanId(maxId+1);
         planService.savePlan(plan);
         return ResponseEntity.ok(plan);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/plans")
-    public List<Plan> addPlan() {
+    public List<Plan> getPlans() {
         return planService.getPlans();
     }
 
     @PostMapping("/updatePlan")
     public ResponseEntity<Map<String, String>> updatePlan(@RequestBody Map<String, String> request) {
         try {
-            System.out.println(request);
             String userId = request.get("userId");
             String planId = request.get("planId");
             planService.updatePlanForUser(userId, Integer.parseInt(planId));
@@ -42,6 +43,7 @@ public class PlanController {
         }
         return ResponseEntity.ok(null);
     }
+
 
 
 }

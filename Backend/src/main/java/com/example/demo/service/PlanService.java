@@ -2,9 +2,14 @@ package com.example.demo.service;
 
 import com.example.demo.entityclass.Plan;
 import com.example.demo.entityclass.User;
+import com.example.demo.helper.MaxPlanIdResult;
+import com.example.demo.helper.MaxUserIdResult;
 import com.example.demo.mongorepository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -24,37 +29,49 @@ public class PlanService {
     @Autowired
     MongoOperations mongoOperations;
 
-    public Plan savePlan(Plan plan){
+    @Autowired
+    MongoTemplate mongoTemplate;
+
+    public Plan savePlan(Plan plan) {
         return planRepository.save(plan);
     }
 
-    public List<Plan> getPlans(){
+    public List<Plan> getPlans() {
         return planRepository.findAll();
     }
 
-    public void updatePlanForUser(String _id, int plan){
+    public void updatePlanForUser(String _id, int plan) {
         try {
             Query query = new Query(Criteria.where("id").is(_id));
             Update update = new Update();
             update.set("plan", plan);
             mongoOperations.updateFirst(query, update, User.class);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public int getCountForPlan(int _id){
+    public int getCountForPlan(int _id) {
         try {
             Optional<Plan> optionalPlan = planRepository.findByPlanId(_id);
-            if(optionalPlan.isPresent()){
+            if (optionalPlan.isPresent()) {
                 Plan plan = optionalPlan.get();
-                return  plan.getAllowedCounts();
+                return plan.getAllowedCounts();
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    public Integer getMaxPlanId() {
+        Aggregation aggregation = Aggregation.newAggregation(
+                Aggregation.group().max("planId").as("maxPlanId")
+        );
+        AggregationResults<MaxPlanIdResult> result = mongoTemplate.aggregate(
+                aggregation, "plan", MaxPlanIdResult.class
+        );
+        MaxPlanIdResult maxPlanIdResult = result.getUniqueMappedResult();
+        return (maxPlanIdResult != null) ? maxPlanIdResult.getMaxPlanId() : null;
     }
 }
