@@ -19,6 +19,7 @@ public class UserController {
     public User signup(@RequestBody User user) {
         Integer maxUserId = userService.getMaxUserId();
         user.setUserId(maxUserId+1);
+        user.setPlanId(1);
         return userService.saveUser(user);
     }
 

@@ -28,15 +28,16 @@ public class UrlController {
         int userId;
         Map<String, String> response = new HashMap<>();
         if (urlDTO.customUrl == null) {
-            url = urlService.shortenUrl(urlDTO.getLongUrl());
+            url = urlService.shortenUrl(urlDTO.getLongUrl(), urlDTO.getUserId());
         } else {
-            url = urlService.shortenCustomUrl(urlDTO.getLongUrl(), urlDTO.getCustomUrl());
+            url = urlService.shortenCustomUrl(urlDTO.getLongUrl(), urlDTO.getCustomUrl(), urlDTO.getUserId());
         }
         if (url == null) {
             response.put("error", "Failed to shorten URL. Please try again with a different custom URL or long URL.");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
         userId = url.getUserId();
+        System.out.println(userId);
         response.put("shortenedUrl", url.getShortUrl());
         response.put("userId", String.valueOf(userId));
         response.put("longUrl", urlDTO.longUrl);

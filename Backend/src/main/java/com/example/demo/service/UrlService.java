@@ -15,7 +15,7 @@ public class UrlService {
     @Autowired
     private UrlRepository urlRepository;
 
-    public Url shortenUrl(String originalUrl) {
+    public Url shortenUrl(String originalUrl, int userId) {
         String shortUrl;
         do {
             shortUrl = generateShortUrl();
@@ -23,14 +23,16 @@ public class UrlService {
         Url url = new Url();
         url.setOriginalUrl(originalUrl);
         url.setShortUrl("hello"+shortUrl);
+        url.setUserId(userId);
         return urlRepository.save(url);
     }
 
-    public Url shortenCustomUrl(String originalUrl, String customUrl) {
+    public Url shortenCustomUrl(String originalUrl, String customUrl, int userId) {
          if(!urlRepository.existsByShortUrl(customUrl)) {
              Url url = new Url();
              url.setOriginalUrl(originalUrl);
              url.setShortUrl(customUrl);
+             url.setUserId(userId);
              return urlRepository.save(url);
          }
          return null;
