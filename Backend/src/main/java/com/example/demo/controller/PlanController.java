@@ -5,6 +5,7 @@ import com.example.demo.entityclass.Plan;
 import com.example.demo.entityclass.User;
 import com.example.demo.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,11 +33,11 @@ public class PlanController {
     }
 
     @PostMapping("/updatePlan")
-    public ResponseEntity<Map<String, String>> updatePlan(@RequestBody Map<String, String> request) {
+    public ResponseEntity<Map<String, String>> updatePlan(@RequestBody Map<String, Integer> request) {
         try {
-            String userId = request.get("userId");
-            String planId = request.get("planId");
-            planService.updatePlanForUser(userId, Integer.parseInt(planId));
+            int userId = request.get("userId");
+            int planId = request.get("planId");
+            planService.updatePlanForUser(userId, planId);
         }
         catch (Exception e){
             e.printStackTrace();

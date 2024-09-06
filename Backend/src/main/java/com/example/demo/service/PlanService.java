@@ -40,11 +40,11 @@ public class PlanService {
         return planRepository.findAll();
     }
 
-    public void updatePlanForUser(String _id, int plan) {
+    public void updatePlanForUser(int _id, int plan) {
         try {
-            Query query = new Query(Criteria.where("id").is(_id));
+            Query query = new Query(Criteria.where("userId").is(_id));
             Update update = new Update();
-            update.set("plan", plan);
+            update.set("planId", plan);
             mongoOperations.updateFirst(query, update, User.class);
         } catch (Exception e) {
             e.printStackTrace();
