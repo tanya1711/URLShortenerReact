@@ -9,6 +9,7 @@ const App = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [planId, setPlanId] = useState(null);
+  const [userId, setUserId] = useState('');
 
  useEffect(() => {
      const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
@@ -19,7 +20,9 @@ const App = () => {
 
      // Fetch planId from localStorage
      const storedPlanId = localStorage.getItem('planId');
+     const storedUserId = localStorage.getItem('userId');
      setPlanId(storedPlanId ? parseInt(storedPlanId) : 0); // Default to 0 if not found
+     setUserId(parseInt(storedUserId) || '');
    }, []);
 
   const toggleUrlInput = () => {
@@ -37,6 +40,7 @@ const App = () => {
     const credentials = btoa(`${email}:${password}`);
     const requestBody = {
       longUrl,
+      userId,
       customUrl: isCustomUrlEnabled && customUrl.trim() ? customUrl : null
     };
 

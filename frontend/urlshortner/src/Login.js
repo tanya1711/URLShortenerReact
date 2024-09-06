@@ -42,6 +42,7 @@ const LoginPage = () => {
       const user = await response.json();
        console.log("plan Id" + user.planId)
               localStorage.setItem('planId', user.planId);
+              localStorage.setItem('userId', user.userId);
       setMessage('Login successful');
       setMessageType('success');
 

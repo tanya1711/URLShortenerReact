@@ -69,6 +69,7 @@ public class UserService {
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             planId = user.getPlanId();
+
         }
         return planId;
     }
