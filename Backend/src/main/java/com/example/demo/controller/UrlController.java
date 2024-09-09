@@ -37,7 +37,6 @@ public class UrlController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
         userId = url.getUserId();
-        System.out.println(userId);
         response.put("shortenedUrl", url.getShortUrl());
         response.put("userId", String.valueOf(userId));
         response.put("longUrl", urlDTO.longUrl);
