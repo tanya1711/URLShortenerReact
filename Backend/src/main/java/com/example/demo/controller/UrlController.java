@@ -46,6 +46,7 @@ public class UrlController {
 
     @GetMapping("/{shortUrl}")
     public RedirectView redirectUrl(@PathVariable String shortUrl) {
+        //add count - bind with user - try catch
         return urlService.getOriginalUrl(shortUrl)
                 .map(url -> new RedirectView(url.getOriginalUrl()))
                 .orElse(null);

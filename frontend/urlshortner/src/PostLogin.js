@@ -55,7 +55,7 @@ const App = () => {
         },
         body: JSON.stringify(requestBody)
       });
-
+console.log(response);
       if (!response.ok) {
         if (response.status === 403) {
           setShortenedUrlMessage('OOPs, you reached your free trial limit!');
