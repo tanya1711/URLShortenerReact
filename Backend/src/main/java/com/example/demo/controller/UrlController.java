@@ -4,6 +4,7 @@ import com.example.demo.dto.URLInputDTO;
 import com.example.demo.entityclass.Url;
 import com.example.demo.entityclass.User;
 import com.example.demo.service.UrlService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,9 @@ public class UrlController {
     }
 
     @GetMapping("/{shortUrl}")
-    public RedirectView redirectUrl(@PathVariable String shortUrl) {
+    public RedirectView redirectUrl(@PathVariable String shortUrl, HttpServletRequest request) {
+        String userAgent = request.getHeader("User-Agent");
+        System.out.println(userAgent);
         return urlService.getOriginalUrl(shortUrl)
                 .map(url -> new RedirectView(url.getOriginalUrl()))
                 .orElse(null);
