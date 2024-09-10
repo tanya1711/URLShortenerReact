@@ -28,7 +28,7 @@ public class UrlController {
         Url url;
         int userId;
         Map<String, String> response = new HashMap<>();
-        if (urlDTO.customUrl == null) {
+        if (urlDTO.getCustomUrl() == null) {
             url = urlService.shortenUrl(urlDTO.getLongUrl(), urlDTO.getUserId());
         } else {
             url = urlService.shortenCustomUrl(urlDTO.getLongUrl(), urlDTO.getCustomUrl(), urlDTO.getUserId());
@@ -40,7 +40,7 @@ public class UrlController {
         userId = url.getUserId();
         response.put("shortenedUrl", url.getShortUrl());
         response.put("userId", String.valueOf(userId));
-        response.put("longUrl", urlDTO.longUrl);
+        response.put("longUrl", urlDTO.getLongUrl());
         return ResponseEntity.ok(response);
     }
 
@@ -48,6 +48,7 @@ public class UrlController {
     public RedirectView redirectUrl(@PathVariable String shortUrl, HttpServletRequest request) {
         String userAgent = request.getHeader("User-Agent");
         System.out.println(userAgent);
+        urlService.increaseClickCount(shortUrl);
         return urlService.getOriginalUrl(shortUrl)
                 .map(url -> new RedirectView(url.getOriginalUrl()))
                 .orElse(null);
