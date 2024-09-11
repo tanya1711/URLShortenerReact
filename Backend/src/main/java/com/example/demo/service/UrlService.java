@@ -71,7 +71,7 @@ public class UrlService {
             url.setBrowserClicks(url.getBrowserClicks() + 1);
         } else if (device.contains("Android")) {
             url.setAndroidClicks(url.getAndroidClicks() + 1);
-        } else if (device.contains("IPHONE")) {
+        } else if (device.contains("Mac")) {
             url.setIosClicks(url.getIosClicks() + 1);
         }
         return url;
