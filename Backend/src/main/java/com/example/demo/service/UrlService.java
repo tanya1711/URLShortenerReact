@@ -52,7 +52,6 @@ public class UrlService {
     }
 
     public void increaseClickCount(String shortUrl){
-
         Optional<Url> optionalUrl = urlRepository.findByShortUrl(shortUrl);
         if (optionalUrl.isPresent()) {
             Url url = optionalUrl.get();
