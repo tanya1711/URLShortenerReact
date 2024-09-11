@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'Givonic';
+    src: url('Givonic-Black.eot');
+    src: local('Givonic Black'), local('Givonic-Black'),
+        url('Givonic-Black.eot?#iefix') format('embedded-opentype'),
+        url('Givonic-Black.woff2') format('woff2'),
+        url('Givonic-Black.woff') format('woff'),
+        url('Givonic-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Givonic';
+    src: url('Givonic-SemiBold.eot');
+    src: local('Givonic SemiBold'), local('Givonic-SemiBold'),
+        url('Givonic-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Givonic-SemiBold.woff2') format('woff2'),
+        url('Givonic-SemiBold.woff') format('woff'),
+        url('Givonic-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Givonic';
+    src: url('Givonic-Thin.eot');
+    src: local('Givonic Thin'), local('Givonic-Thin'),
+        url('Givonic-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Givonic-Thin.woff2') format('woff2'),
+        url('Givonic-Thin.woff') format('woff'),
+        url('Givonic-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Givonic';
+    src: url('Givonic-Bold.eot');
+    src: local('Givonic Bold'), local('Givonic-Bold'),
+        url('Givonic-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Givonic-Bold.woff2') format('woff2'),
+        url('Givonic-Bold.woff') format('woff'),
+        url('Givonic-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Givonic';
+    src: url('Givonic-Regular_500_wg.eot');
+    src: local('Givonic Regular_500 wg'), local('Givonic-Regular_500_wg'),
+        url('Givonic-Regular_500_wg.eot?#iefix') format('embedded-opentype'),
+        url('Givonic-Regular_500_wg.woff2') format('woff2'),
+        url('Givonic-Regular_500_wg.woff') format('woff'),
+        url('Givonic-Regular_500_wg.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Givonic';
+    src: url('Givonic-Regular.eot');
+    src: local('Givonic Regular'), local('Givonic-Regular'),
+        url('Givonic-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Givonic-Regular.woff2') format('woff2'),
+        url('Givonic-Regular.woff') format('woff'),
+        url('Givonic-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Givonic';
+    src: url('Givonic-Light.eot');
+    src: local('Givonic Light'), local('Givonic-Light'),
+        url('Givonic-Light.eot?#iefix') format('embedded-opentype'),
+        url('Givonic-Light.woff2') format('woff2'),
+        url('Givonic-Light.woff') format('woff'),
+        url('Givonic-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -1,6 +1,7 @@
 package com.example.demo.filter;
 
 
+import com.example.demo.service.PlanService;
 import com.example.demo.service.UserService;
 import io.micrometer.common.lang.NonNullApi;
 import jakarta.servlet.FilterChain;
@@ -32,8 +33,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private DaoAuthenticationProvider authenticationProvider;
 
     @Autowired
-
     private UserService userService;
+
+    @Autowired
+    private PlanService planService;
 //    @Autowired
 //    private JwtTokenService jwtTokenService;
 
@@ -41,9 +44,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
             List<String> permittedURIs = new ArrayList<>();
-            permittedURIs.addAll(Arrays.asList("/signup", "/error", "/login", "/home", "/login.html", "/signUp.html","/favicon.ico","/postlogin.html"));
+            permittedURIs.addAll(Arrays.asList("/signup", "/error", "/login", "/home", "/login.html", "/signUp.html", "/favicon.ico", "/postlogin.html", "/adminLogin"));
 //            if(!permittedURIs.contains(request.getRequestURI()) && !request.getRequestURI().contains("hello") ) {
-                if(request.getRequestURI().contains("/shorten")) {
+            if (request.getRequestURI().contains("/shorten")) {
                 System.out.println("ENTERED FILTER!!!");
                 System.out.println(request.getRequestURI());
                 System.out.println(request.getMethod());
@@ -62,27 +65,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 Authentication authentication = authenticationProvider.authenticate(new UsernamePasswordAuthenticationToken(username, password));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 System.out.println(authentication);
-                if (request.getRequestURI().equals("/shorten")) {
-
-                    if (userService.getCountByUsername(username) < 1) {
-                        userService.incrementCount(username);
-//                        response.setStatus(HttpServletResponse.SC_OK);
-//                        System.out.println(response.getStatus()+" set through filter" );
-
-//                        response.getWriter().write("Request successful.");
-//                        return;
-
-                    } else {
-                        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                        response.getWriter().write("OOPs, you reached your free trial limit!");
-                        response.getWriter().flush();
-                        response.getWriter().close();
-                        return;
-                    }
+                int planId = userService.getPlanCountByUsername(username);
+                int count = planService.getCountForPlan(planId);
+                System.out.println(planId + " " + count);
+                if (userService.getCountByUsername(username) < count) {
+                    userService.incrementCount(username);
+                } else {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.getWriter().write("OOPs, you reached your free trial limit!");
+                    response.getWriter().flush();
+                    response.getWriter().close();
+                    return;
                 }
             }
 
         } catch (BadCredentialsException e) {
+            e.printStackTrace();
             System.out.println("Invalid/UserName password");
         }
 

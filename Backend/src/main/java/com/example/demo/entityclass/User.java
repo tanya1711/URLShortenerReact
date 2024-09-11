@@ -8,31 +8,35 @@ public class User {
 
     @Id
     private String id;
+    private int userId;
     private String name;
     private String email;
     private String password;
     private int count;
-    private int isPaid;
+    private int planId = 0;
 
     // Constructors
     public User() {
+
     }
 
-    public User(String name, String email, String password, int isPaid) {
+    public User(String name, String email, String password, int planId, int userId) {
+        this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
         this.count = 0;
-        this.isPaid = isPaid;
+        this.planId = planId;
     }
 
     // Getters and Setters
-    public String getId() {
-        return id;
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public int getUserId() {
+        return userId;
     }
 
     public String getName() {
@@ -59,19 +63,20 @@ public class User {
         this.password = password;
     }
 
+
+    public void setPlanId(int planId) {
+        this.planId = planId;
+    }
+
+    public int getPlanId() {
+        return planId;
+    }
+
     public void setCount(int count) {
         this.count = count;
     }
 
     public int getCount() {
         return count;
-    }
-
-    public void setIsPaid(int isPaid) {
-        this.isPaid = isPaid;
-    }
-
-    public int getIsPaid() {
-        return isPaid;
     }
 }

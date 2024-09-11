@@ -8,19 +8,21 @@
         <outputRelativeToContentRoot value="true" />
         <module name="URLShortner" />
         <module name="URLShortnerNew" />
+        <module name="URLShortenerReact" />
         <module name="demo (2)" />
-        <module name="demo" />
         <module name="demo (1)" />
-        <module name="frontend" />
+        <module name="demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Backend" target="17" />
+      <module name="frontend" target="18" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Backend" options="-parameters" />
+      <module name="URLShortenerReact" options="-parameters" />
       <module name="URLShortner" options="-parameters" />
       <module name="URLShortnerNew" options="-parameters" />
       <module name="demo" options="-parameters" />

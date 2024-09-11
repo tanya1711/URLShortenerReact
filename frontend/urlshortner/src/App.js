@@ -6,6 +6,7 @@ import SignUp from './SignUp';
 import PostLogin from './PostLogin';
 import Admin from './Admin';
 import AdminPostLogin from './AdminPostLogin';
+import Profile from './Profile';
 function App() {
   return (
     <Routes>
@@ -15,6 +16,7 @@ function App() {
       <Route path="/postlogin" element={<PostLogin />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/adminpostlogin" element={<AdminPostLogin />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }

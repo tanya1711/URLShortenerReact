@@ -14,9 +14,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @RequestMapping(method = RequestMethod.POST, value="/signup")
     public User signup(@RequestBody User user) {
-
+        Integer maxUserId = userService.getMaxUserId();
+        user.setUserId(maxUserId+1);
+        user.setPlanId(0);
         return userService.saveUser(user);
     }
 

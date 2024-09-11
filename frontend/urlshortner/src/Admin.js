@@ -25,7 +25,7 @@ const Admin = () => {
     const credentials = btoa(`${email}:${password}`);
 
     try {
-      const response = await fetch('http://localhost:8081/login', {
+      const response = await fetch('http://localhost:8081/adminLogin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
