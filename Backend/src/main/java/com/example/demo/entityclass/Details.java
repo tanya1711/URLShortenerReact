@@ -7,15 +7,19 @@ public class Details {
     private String email;
     private int count;
     private int planId;
+    private String planName;
+    private int allowedCounts;
     private List<UrlDto> urls;
 
     // Constructor for convenience
-    public Details(String userId, String name, String email, int count, int planId, List<UrlDto> urls) {
+    public Details(String userId, String name, String email, int count, int planId, String planName,int allowedCounts, List<UrlDto> urls) {
         this.userId = userId;
         this.email = email;
         this.name = name;
         this.count = count;
         this.planId = planId;
+        this.planName = planName;
+        this.allowedCounts = allowedCounts;
         this.urls = urls;
     }
 
@@ -64,6 +68,15 @@ public class Details {
         this.planId = planId;
     }
 
+    // Getter and Setter for planId
+    public int getAllowedCounts() {
+        return allowedCounts;
+    }
+
+    public void setAllowedCounts(int allowedCounts) {
+        this.allowedCounts = allowedCounts;
+    }
+
     // Getter and Setter for urls (List of UrlDto)
     public List<UrlDto> getUrls() {
         return urls;
@@ -71,5 +84,13 @@ public class Details {
 
     public void setUrls(List<UrlDto> urls) {
         this.urls = urls;
+    }
+
+    public String getPlanName() {
+        return planName;
+    }
+
+    public void setPlanName(String planName) {
+        this.planName = planName;
     }
 }

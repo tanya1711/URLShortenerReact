@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entityclass.Url;
+import com.example.demo.entityclass.User;
 import com.example.demo.mongorepository.UrlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,5 +49,17 @@ public class UrlService {
 
     public List<Url> getURLList(int userId){
         return  urlRepository.findByUserId(userId);
+    }
+
+    public void increaseClickCount(String shortUrl){
+        Optional<Url> optionalUrl = urlRepository.findByShortUrl(shortUrl);
+        if (optionalUrl.isPresent()) {
+            Url url = optionalUrl.get();
+            url.setClickCount(url.getClickCount()+1);
+            urlRepository.save(url);
+            System.out.println("Updated click count for url: " + url.getShortUrl() + " to " + url.getClickCount());
+        } else {
+            System.out.println("Url not found: " + shortUrl);
+        }
     }
 }

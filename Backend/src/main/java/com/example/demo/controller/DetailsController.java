@@ -19,7 +19,6 @@ public class DetailsController {
     @GetMapping("/details/{userId}")
     public ResponseEntity<Details> getCombinedDataByUserId(@PathVariable int userId) {
         Optional<Details> combinedData = detailsService.getCombinedDataByUserId(userId);
-
         return combinedData.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

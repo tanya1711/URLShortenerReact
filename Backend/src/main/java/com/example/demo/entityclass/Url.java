@@ -11,6 +11,7 @@ public class Url {
     private String originalUrl;
     private String shortUrl;
     private int userId;
+    private int clickCount;
     // Getters and Setters
 
     public String getId() {
@@ -43,5 +44,13 @@ public class Url {
 
     public int getUserId() {
         return userId;
+    }
+
+    public void setClickCount(int clickCount) {
+        this.clickCount = clickCount;
+    }
+
+    public int getClickCount() {
+        return clickCount;
     }
 }
