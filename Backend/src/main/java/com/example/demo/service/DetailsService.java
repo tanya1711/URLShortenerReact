@@ -41,7 +41,7 @@ public class DetailsService {
             int allowedCounts = plan.get().getAllowedCounts();
             // Create a list of UrlDto objects containing longUrl and shortUrl
             List<UrlDto> urls = urlList.stream()
-                    .map(url -> new UrlDto(url.getOriginalUrl(), url.getShortUrl(), url.getClickCount()))  // Assuming Url has getLongUrl() and getShortenedUrl()
+                    .map(url -> new UrlDto(url.getOriginalUrl(), url.getShortUrl(), url.getClickCount(), url.getBrowserClicks(), url.getAndroidClicks(), url.getIosClicks()))  // Assuming Url has getLongUrl() and getShortenedUrl()
                     .collect(Collectors.toList());
 
             // Create and return Details object
