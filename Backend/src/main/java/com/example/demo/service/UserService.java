@@ -40,7 +40,6 @@ public class UserService {
     }
 
     public void incrementCount(String email) {
-
         Optional<User> optionalUser = userRepository.findByEmail(email);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();

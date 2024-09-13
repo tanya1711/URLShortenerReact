@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './PostLogin.css';
 
 const App = () => {
@@ -10,25 +10,44 @@ const App = () => {
   const [password, setPassword] = useState('');
   const [planId, setPlanId] = useState('');
   const [userId, setUserId] = useState('');
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const drawerRef = useRef(null);
 
- useEffect(() => {
-     const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
-     if (loggedInUser) {
-       setEmail(loggedInUser.email);
-       const storedPassword = localStorage.getItem('password');
-       setPassword(storedPassword);
-       console.log(storedPassword);
-     }
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (drawerRef.current && !drawerRef.current.contains(event.target) && !event.target.closest('.profile-icon')) {
+        setIsDrawerOpen(false);
+      }
+    };
 
-     // Fetch planId from localStorage
-     const storedPlanId = localStorage.getItem('planId');
-     const storedUserId = localStorage.getItem('userId');
-     setPlanId(storedPlanId ? parseInt(storedPlanId) : 0); // Default to 0 if not found
-     setUserId(parseInt(storedUserId) || '');
-   }, []);
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
+    if (loggedInUser) {
+      setEmail(loggedInUser.email);
+      const storedPassword = localStorage.getItem('password');
+      setPassword(storedPassword);
+      console.log(storedPassword);
+    }
+
+    const storedPlanId = localStorage.getItem('planId');
+    const storedUserId = localStorage.getItem('userId');
+    setPlanId(storedPlanId ? parseInt(storedPlanId) : 0);
+    setUserId(parseInt(storedUserId) || '');
+  }, []);
 
   const toggleUrlInput = () => {
     setIsCustomUrlEnabled(prevState => !prevState);
+  };
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(prevState => !prevState);
   };
 
   const submitShortenUrlForm = async (event) => {
@@ -55,7 +74,7 @@ const App = () => {
         },
         body: JSON.stringify(requestBody)
       });
-
+      console.log(response);
       if (!response.ok) {
         if (response.status === 403) {
           setShortenedUrlMessage('OOPs, you reached your free trial limit!');
@@ -72,49 +91,60 @@ const App = () => {
     }
   };
 
-   return (
-      <div className="post-login-wrapper">
-        <div className="PostLogin">
-          <h1>BIGSHYFT</h1>
-          <h2>Shorten a long URL</h2>
-          <form id="shorten-url-form" onSubmit={submitShortenUrlForm}>
-            <label htmlFor="longUrl">Enter your URL:</label>
-            <input
-              type="text"
-              id="longUrl"
-              name="longUrl"
-              placeholder="https://example.com"
-              value={longUrl}
-              onChange={(e) => setLongUrl(e.target.value)}
-              required
-            />
-            {planId === 1 && (
-              <div className="checkbox-container">
-                <input
-                  type="checkbox"
-                  id="enableUrlInput"
-                  checked={isCustomUrlEnabled}
-                  onChange={toggleUrlInput}
-                />
-                <input
-                  type="text"
-                  id="customUrl"
-                  name="customUrl"
-                  placeholder="Enter your Custom URL"
-                  value={customUrl}
-                  onChange={(e) => setCustomUrl(e.target.value)}
-                  disabled={!isCustomUrlEnabled}
-                />
-              </div>
-            )}
-            <button type="submit">Shorten URL</button>
-          </form>
-          <div className={`success-message ${shortenedUrlMessage.includes('Error') ? 'error' : ''}`}>
-            {shortenedUrlMessage}
-          </div>
+  return (
+    <div className="post-login-wrapper">
+      <div className="profile-container">
+        <div className="profile-icon" onClick={toggleDrawer}>
+          A
+        </div>
+        <div ref={drawerRef} className={`drawer ${isDrawerOpen ? 'open' : ''}`}>
+          <a href="/profile">My Profile</a>
+          <a href="/analytics">Analytics</a>
+          <a href="/change-password">Change Password</a>
+          <a href="/logout">Logout</a>
         </div>
       </div>
-    );
+
+      <div className="PostLogin">
+        <h2>Shorten a long URL</h2>
+        <form id="shorten-url-form" onSubmit={submitShortenUrlForm}>
+          <label htmlFor="longUrl">Enter your URL:</label>
+          <input
+            type="text"
+            id="longUrl"
+            name="longUrl"
+            placeholder="https://example.com"
+            value={longUrl}
+            onChange={(e) => setLongUrl(e.target.value)}
+            required
+          />
+          {planId === 1 && (
+            <div className="checkbox-container">
+              <input
+                type="checkbox"
+                id="enableUrlInput"
+                checked={isCustomUrlEnabled}
+                onChange={toggleUrlInput}
+              />
+              <input
+                type="text"
+                id="customUrl"
+                name="customUrl"
+                placeholder="Enter your Custom URL"
+                value={customUrl}
+                onChange={(e) => setCustomUrl(e.target.value)}
+                disabled={!isCustomUrlEnabled}
+              />
+            </div>
+          )}
+          <button type="submit">Shorten URL</button>
+        </form>
+        <div className={`success-message ${shortenedUrlMessage.includes('Error') ? 'error' : ''}`}>
+          {shortenedUrlMessage}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default App;

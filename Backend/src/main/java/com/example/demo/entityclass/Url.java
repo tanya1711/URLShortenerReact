@@ -11,6 +11,10 @@ public class Url {
     private String originalUrl;
     private String shortUrl;
     private int userId;
+    private int clickCount;
+    private int browserClicks;
+    private int androidClicks;
+    private int iosClicks;
     // Getters and Setters
 
     public String getId() {
@@ -43,5 +47,37 @@ public class Url {
 
     public int getUserId() {
         return userId;
+    }
+
+    public void setClickCount(int clickCount) {
+        this.clickCount = clickCount;
+    }
+
+    public int getClickCount() {
+        return clickCount;
+    }
+
+    public void setAndroidClicks(int androidClicks) {
+        this.androidClicks = androidClicks;
+    }
+
+    public int getAndroidClicks() {
+        return androidClicks;
+    }
+
+    public void setBrowserClicks(int browserClicks) {
+        this.browserClicks = browserClicks;
+    }
+
+    public int getBrowserClicks() {
+        return browserClicks;
+    }
+
+    public void setIosClicks(int iosClicks) {
+        this.iosClicks = iosClicks;
+    }
+
+    public int getIosClicks() {
+        return iosClicks;
     }
 }
