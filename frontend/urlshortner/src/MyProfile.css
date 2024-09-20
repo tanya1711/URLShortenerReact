@@ -1,0 +1,256 @@
+.name-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.chakra-avatar {
+  margin-right: 10px;
+}
+
+.chakra-avatar__img {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+}
+
+.name-subheader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chakra-text {
+  font-family: "Givonic", sans-serif;
+  color: #333;
+}
+
+.css-6mrx8e {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.css-9z8run {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+}
+
+.myprofile-name {
+  /* Added styling if needed */
+}
+
+.css-hboir5 {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.css-70qvj9 {
+  display: flex;
+  align-items: center;
+}
+
+.css-zrdwan, .css-r54sf5, .css-r54sf57 {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.chakra-icon {
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  fill: #333;
+}
+
+.css-1bo32ph {
+  color: black;
+}
+
+.css-1kfrb8b {
+  font-size: 16px;
+  margin: 0 8px;
+  color: #888;
+}
+
+.my-profile-container {
+  position: absolute;
+  top: 20px;
+  right: 60px;
+}
+
+.myProfile-container {
+  padding: 20px;
+}
+
+.location-section {
+  margin-top: 20px;
+}
+
+.separator {
+  border: 0;
+  border-top: 5px solid #ccc;
+  margin: 20px 0;
+}
+
+.url-container {
+  margin-top: 10px;
+}
+
+.url-container p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.url-container span {
+  font-weight: bold;
+  color: #333;
+}
+
+.custom-hr {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #555555;
+  margin-right: 20px;
+  margin-left: 10px;
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+}
+
+
+.card-bottom-header {
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  margin: 20px 0;
+}
+
+.url-list {
+  font-family: "Givonic", sans-serif;
+  color: #fff;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.long-url {
+  max-width: 50ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  transition: all 0.3s ease;
+  margin-bottom: 5px;
+
+}
+
+.long-url:hover {
+  white-space: normal;
+  overflow-x: auto;
+  word-break: break-all;
+  transition: all 0.3s ease;
+}
+
+.copy-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.copy-icon-img {
+  transform-origin: 0px 0px;
+  position: relative;
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
+
+.copy-icon-arrow {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.copy-icon-arrow img {
+  width: 20px;
+  height: auto;
+}
+
+.myProfile-post-login-wrapper {
+  background: radial-gradient(circle at center, rgba(40, 40, 40, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.css-wrapper {
+  padding-inline: 0px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+}
+
+.css-container {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  gap: var(--chakra-space-3);
+}
+
+.card-wrapper {
+  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 28px;
+  padding-bottom: 40px;
+  overflow: visible;
+  border-radius:10px;
+}
+.url-card {
+  background: radial-gradient(circle at -8.9% 51.2%, rgb(255, 124, 0) 0%, rgb(255, 124, 0) 15.9%, rgb(255, 163, 77) 15.9%, rgb(255, 163, 77) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.url-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.url-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.short-url{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.click-count {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.browser-clicks, .android-clicks, .ios-clicks{
+  margin-top: 5px;
+  margin-bottom:5px;
+}
+.total-clicks{
+    margin-top:5px;
+}
+
+

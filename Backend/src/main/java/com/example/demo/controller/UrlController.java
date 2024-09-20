@@ -57,9 +57,14 @@ public class UrlController {
 
     @GetMapping("/getPostLogin")
     public ResponseEntity getLogin() {
-        System.out.println("entered post login container..........");
         return ResponseEntity.ok(null);
     }
+
+    @GetMapping("/adminpostlogin")
+    public ResponseEntity getadminpostLogin() {
+        return ResponseEntity.ok(null);
+    }
+
 
     @GetMapping( "/geturl/{userId}")
     public List<Url> getUserList(@PathVariable String userId){

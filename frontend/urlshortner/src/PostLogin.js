@@ -50,6 +50,12 @@ const App = () => {
     setIsDrawerOpen(prevState => !prevState);
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    window.location.href = '/';
+  };
+
   const submitShortenUrlForm = async (event) => {
     event.preventDefault();
 
@@ -98,10 +104,10 @@ const App = () => {
           A
         </div>
         <div ref={drawerRef} className={`drawer ${isDrawerOpen ? 'open' : ''}`}>
-          <a href="/profile">My Profile</a>
+          <a href="/my-profile">My Profile</a>
           <a href="/analytics">Analytics</a>
-          <a href="/change-password">Change Password</a>
-          <a href="/logout">Logout</a>
+          <a href="/my-profile">Change Password</a>
+          <a href="/" onClick={handleLogout}>Logout</a>
         </div>
       </div>
 

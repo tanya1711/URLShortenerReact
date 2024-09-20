@@ -20,7 +20,7 @@ function App() {
       <Route path="/adminpostlogin" element={<AdminPostLogin />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/analytics" element={<Analytics />} />
-      <Route path="/myprofile" element={<MyProfile />} />
+      <Route path="/my-profile" element={<MyProfile />} />
     </Routes>
   );
 }
